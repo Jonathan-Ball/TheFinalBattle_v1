@@ -20,7 +20,7 @@ public class Battle
         while (true)
         {
             Console.WriteLine($"Round: {Round}");
-            List<Party> parties = new List<Party>() { Heroes, Monsters };           
+            List<Party> parties = new() { Heroes, Monsters };           
             foreach (Party party in parties)
             {                                          
                 foreach (Character character in party.Characters)
