@@ -3,9 +3,6 @@
 public class HealthPotionItem : IItem
 {
     public string Name => "HEALTH POTION";
-    public double Action => SetAction();
-    public double SetAction()
-    {
-        return 10;
-    }
+    public double Action => SetActionAmount();
+    public double SetActionAmount() => 10;
 }

@@ -4,5 +4,5 @@ public interface IItem
 {
     string Name { get; }
     double Action { get; }
-    double SetAction();
+    double SetActionAmount();
 }

@@ -19,5 +19,6 @@ public static class Renderer
             ConsoleHelper.WriteLine($"                                                          {character.Name,45} ({character.HP,3}/{character.MaxHP,-3})", color);
         }
         ConsoleHelper.WriteLine("+===============================================================================================================+", ConsoleColor.White);
+        ConsoleHelper.WriteLine($"It is {currentPlayer}'s Turn", ConsoleColor.Yellow);
     }
 }

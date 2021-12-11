@@ -3,9 +3,6 @@
 public class NoItem : IItem
 {
     public string Name => "NO ITEM";
-    public double Action => SetAction();
-    public double SetAction()
-    {
-        return 0;
-    }
+    public double Action => SetActionAmount();
+    public double SetActionAmount() => 0;
 }

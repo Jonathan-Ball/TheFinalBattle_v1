@@ -12,6 +12,7 @@ public class HumanPlayer : IPlayer
             ConsoleHelper.Write("Select an action: ", ConsoleColor.Blue);
             Party enemyParty = battle.GetEnemyPartyFor(character);
             Party friendlyParty = battle.GetFriendlyPartyFor(character);
+            bool needHeal = character.HP < character.MaxHP / 2;
             while (true)
             {
                 int.TryParse(ConsoleHelper.ReadLine(), out int input);
@@ -21,7 +22,7 @@ public class HumanPlayer : IPlayer
                     {
                         0 => new NothingAction(battle.GetEnemyPartyFor(character).Characters[0]),
                         1 => new AttackAction(character.StandardAttack, battle.GetEnemyPartyFor(character).Characters[0]),
-                        2 => new ItemAction(friendlyParty.Inventory.SelectItem(this)),
+                        2 => new ItemAction(friendlyParty.Inventory.SelectItem(this, needHeal)),
                         _ => new NothingAction(battle.GetEnemyPartyFor(character).Characters[0])
                     };
                 }

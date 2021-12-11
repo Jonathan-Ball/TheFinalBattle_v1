@@ -26,7 +26,6 @@ public class Battle
                 foreach (Character character in party.Characters)
                 {
                     Renderer.Render(this, character);
-                    ConsoleHelper.WriteLine($"It is {character}'s Turn", ConsoleColor.Yellow);
                     party.Player.GetAction(this, character).Run(this, character);
                     RemoveDeadCharacters(parties);
                     if (HeroesHaveWon(this)) { ConsoleHelper.WriteLine("YOU HAVE WON THIS BATTLE!", ConsoleColor.Green); return true; }
