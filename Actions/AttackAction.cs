@@ -11,7 +11,8 @@ public class AttackAction : IAction
     }
     public void Run(Battle battle, Character attacker)
     {
-        double dmg = _attack.Damage;
+        AttackData data = _attack.Generate();
+        double dmg = data.Damage;
         string atkrName = attacker.Name;
         string atkName = _attack.Name;
         string trgtName = _target.Name;
@@ -19,6 +20,11 @@ public class AttackAction : IAction
         _target.LoseHP(dmg);
         if (dmg > 0) ConsoleHelper.WriteLine($"The attack dealt {dmg} damage. {trgtName} is now at {_target.HP}/{_target.MaxHP} HP.", ConsoleColor.DarkRed);
         else ConsoleHelper.WriteLine($"The attack dealt no damage. {trgtName} is still at {_target.HP}/{_target.MaxHP} HP.", ConsoleColor.DarkYellow);
+        if (!_target.IsAlive)
+        {
+            battle.GetFriendlyPartyFor(_target).Characters.Remove(_target);
+            ConsoleHelper.WriteLine($"{_target} has been slain!", ConsoleColor.DarkGray);
+        }
     }
 }
 

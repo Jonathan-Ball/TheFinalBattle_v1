@@ -3,6 +3,6 @@
 public interface IAttack
 {
     string Name { get; }
-    double Damage { get; }
-    double SetDamage();
+    AttackData Generate();
+    double SetDamageData();
 }

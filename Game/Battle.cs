@@ -27,7 +27,6 @@ public class Battle
                 {
                     Renderer.Render(this, character);
                     party.Player.GetAction(this, character).Run(this, character);
-                    RemoveDeadCharacters(parties);
                     if (HeroesHaveWon(this)) { ConsoleHelper.WriteLine("YOU HAVE WON THIS BATTLE!", ConsoleColor.Green); return true; }
                     else if (MonstersHaveWon(this)) { ConsoleHelper.WriteLine("YOU HAVE LOST THIS BATTLE!", ConsoleColor.Red); return false; }
                 }
@@ -39,20 +38,5 @@ public class Battle
     public Party GetFriendlyPartyFor(Character character) => Heroes.Characters.Contains(character) ? Heroes : Monsters;
     public Inventory GetCurrentInventoryFor(Party party) => party.Inventory; 
     public bool HeroesHaveWon(Battle battle) => battle.Monsters.Characters.Count == 0 ? true : false;
-    public bool MonstersHaveWon(Battle battle) => battle.Heroes.Characters.Count == 0 ? true : false;
-    public void RemoveDeadCharacters(List<Party> parties)
-    {
-        foreach (Party party in parties)
-        {
-            foreach (Character character in party.Characters)
-            {
-                if (!character.IsAlive)
-                {
-                    party.Characters.Remove(character);
-                    ConsoleHelper.WriteLine($"{character} has been slain!", ConsoleColor.DarkGray);
-                    break;
-                }
-            }
-        }                         
-    }    
+    public bool MonstersHaveWon(Battle battle) => battle.Heroes.Characters.Count == 0 ? true : false;   
 }

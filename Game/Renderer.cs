@@ -9,14 +9,13 @@ public static class Renderer
         foreach (Character character in battle.Heroes.Characters)
         {
             ConsoleColor color = character == currentPlayer ? ConsoleColor.Magenta : ConsoleColor.Gray;
-            ConsoleHelper.WriteLine($"{character.Name,-45} ({character.HP,3}/{character.MaxHP,-3})", color);
-
+            ConsoleHelper.WriteLine($"{character.Name,-30} ({character.HP,3}/{character.MaxHP,-3}) - GEAR: {character.Gear.Name}", color);
         }
         ConsoleHelper.WriteLine("------------------------------------------------------ VS -------------------------------------------------------", ConsoleColor.White);
         foreach (Character character in battle.Monsters.Characters)
         {
             ConsoleColor color = character == currentPlayer ? ConsoleColor.Magenta : ConsoleColor.Gray;
-            ConsoleHelper.WriteLine($"                                                          {character.Name,45} ({character.HP,3}/{character.MaxHP,-3})", color);
+            ConsoleHelper.WriteLine($"                                                          {character.Name,30} ({character.HP,3}/{character.MaxHP,-3}) - GEAR: {character.Gear.Name}", color);
         }
         ConsoleHelper.WriteLine("+===============================================================================================================+", ConsoleColor.White);
         ConsoleHelper.WriteLine($"It is {currentPlayer}'s Turn", ConsoleColor.Yellow);

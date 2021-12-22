@@ -3,6 +3,6 @@
 public class PunchAttack : IAttack
 {
     public string Name => "PUNCH";
-    public double Damage => SetDamage();
-    public double SetDamage() => 1;
+    public AttackData Generate() => new AttackData(SetDamageData());
+    public double SetDamageData() => 1;
 }  

@@ -9,7 +9,7 @@ public class ItemAction : IAction
     }
     public void Run(Battle battle, Character character)
     {
-        ConsoleHelper.WriteLine($"{character} used {_item.Name} on THEMSELVES.", ConsoleColor.Gray);
+        if (_item is NoItem) ConsoleHelper.WriteLine($"{character} searched for an item to use on THEMSELVES but found nothing.", ConsoleColor.Gray);
         if (_item is HealthPotionItem)
         {
             character.GainHP(_item.Action); 
